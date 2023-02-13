@@ -1,6 +1,6 @@
 {
-    "$id": "http://todo",
-    "$schema": "http://todo",
+    "$id": "http://yousee.dk/schema/content-model.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "properties": {
         "Message": {
