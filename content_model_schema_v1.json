@@ -1,0 +1,750 @@
+{
+    "$id": "http://todo",
+    "$schema": "http://todo",
+    "type": "object",
+    "properties": {
+        "Message": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "header": {
+                    "$ref": "#/definitions/Header"
+                },
+                "payload": {
+                    "$ref": "#/definitions/Payload"
+                }
+            },
+            "required": [
+                "id",
+                "header",
+                "payload"
+            ]
+        }
+    },
+    "definitions": {
+        "Header": {
+            "type": "object",
+            "required": [
+                "entity",
+                "action",
+                "contentType",
+                "id",
+                "sentTimestamp"
+            ],
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "enum": [
+                        "create",
+                        "delete",
+                        "update"
+                    ]
+                },
+                "contentType": {
+                    "type": "string",
+                    "enum": [
+                        "channel",
+                        "content",
+                        "manifestation",
+                        "scheduleOnDemandEvent",
+                        "season",
+                        "series"
+                    ]
+                },
+                "entity": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "id": {
+                    "type": "string"
+                },
+                "sentTimestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "Payload": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "$ref": "#/definitions/Content"
+                },
+                "season": {
+                    "$ref": "#/definitions/Season"
+                },
+                "series": {
+                    "$ref": "#/definitions/Series"
+                },
+                "onDemandEvents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OnDemandEvent"
+                    }
+                },
+                "scheduleEvent": {
+                    "$ref": "#/definitions/ScheduleEvent"
+                },
+                "manifestation": {
+                    "$ref": "#/definitions/Manifestation"
+                }
+            }
+        },
+        "Content": {
+            "type": "object",
+            "properties": {
+                "episode": {
+                    "type": "object",
+                    "properties": {
+                        "number": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "seasonId": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string"
+                },
+                "identifiers": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "origin": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "CRID",
+                                    "ORIGIN_CHANNEL",
+                                    "PROVIDER_ID"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "legacyId": {
+                    "type": "string"
+                },
+                "mediaMetadata": {
+                    "$ref": "#/definitions/MediaMetadata"
+                }
+            },
+            "required": [
+                "id",
+                "lastUpdated",
+                "mediaMetadata"
+            ]
+        },
+        "Season": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "mediaMetadata": {
+                    "$ref": "#/definitions/MediaMetadata"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "numberOfEpisodes": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "seriesId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "lastUpdated",
+                "mediaMetadata"
+            ]
+        },
+        "Series": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "mediaMetadata": {
+                    "$ref": "#/definitions/MediaMetadata"
+                },
+                "numberOfSeasons": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "MediaMetadata":  {
+            "type": "object",
+            "required": [
+                "categories",
+                "genres",
+                "languages",
+                "adultContent"
+            ],
+            "properties": {
+                "adultContent": {
+                    "type": "boolean"
+                },
+                "awards": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "awardName": {
+                                "type": "string"
+                            },
+                            "category": {
+                                "type": "string"
+                            },
+                            "event": {
+                                "type": "string"
+                            },
+                            "winner": {
+                                "type": "boolean"
+                            },
+                            "year": {
+                                "type": "integer",
+                                "format": "int32"
+                            },
+                            "nameIds": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "awardName",
+                            "event",
+                            "winner",
+                            "year"
+                        ]
+                    }
+                },
+                "categories": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "countriesOfOrigin": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "crew": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "name",
+                            "role",
+                            "index"
+                        ],
+                        "properties": {
+                            "index": {
+                                "type": "integer",
+                                "format": "int32"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "nameId": {
+                                "type": "string"
+                            },
+                            "role": {
+                                "type": "string"
+                            },
+                            "roleNames": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "genres": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "imdbId": {
+                    "type": "string"
+                },
+                "isDubbed": {
+                    "type": "boolean"
+                },
+                "kidsContent": {
+                    "type": "boolean"
+                },
+                "languages": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "description": {
+                                "type": "object",
+                                "properties": {
+                                    "summary": {
+                                        "type": "string"
+                                    },
+                                    "synopsis": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "images": {
+                                "type": "array",
+                                "uniqueItems": true,
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "imagetype": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "metadataLanguage": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "images",
+                            "metadataLanguage",
+                            "title"
+                        ]
+                    }
+                },
+                "maturityRating": {
+                    "type": "string"
+                },
+                "movieConnections": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "titleId": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "followed_by",
+                                    "follows"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "orgTitle": {
+                    "type": "string"
+                },
+                "productionYear": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "spokenLanguages": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "OnDemandEvent": {
+            "type": "object",
+            "properties": {
+                "availabilityEnd": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "availabilityStart": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "channelId": {
+                    "type": "string"
+                },
+                "contentId": {
+                    "type": "string"
+                },
+                "decoration": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "languageCode": {
+                    "type": "string"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "originChannel": {
+                    "type": "string"
+                },
+                "provider": {
+                    "type": "string"
+                },
+                "rights": {
+                    "type": "object",
+                    "properties": {
+                        "archive": {
+                            "type": "boolean"
+                        },
+                        "downloadable": {
+                            "type": "boolean"
+                        },
+                        "npvr": {
+                            "type": "boolean"
+                        },
+                        "offerType": {
+                            "type": "string",
+                            "enum": [
+                                "FREE_CONTENT",
+                                "PURCHASE",
+                                "RENT",
+                                "SVOD"
+                            ]
+                        },
+                        "price": {
+                            "type": "number"
+                        },
+                        "scrubbing": {
+                            "type": "string"
+                        },
+                        "startOver": {
+                            "type": "boolean"
+                        },
+                        "streamableAway": {
+                            "type": "boolean"
+                        },
+                        "vod": {
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "archive",
+                        "downloadable",
+                        "npvr",
+                        "offerType",
+                        "price",
+                        "scrubbing",
+                        "startOver",
+                        "streamableAway",
+                        "vod"
+                    ]
+                },
+                "rightsId": {
+                    "type": "string"
+                },
+                "scheduleEventId": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "lastUpdated",
+                "contentId",
+                "slug",
+                "decoration",
+                "site",
+                "availabilityStart",
+                "availabilityEnd",
+                "rights"
+            ]
+        },
+        "ScheduleEvent": {
+            "type": "object",
+            "properties": {
+                "actualEnd": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "actualStart": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "announcedEnd": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "announcedStart": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "broadcastDate": {
+                    "type": "string"
+                },
+                "channelId": {
+                    "type": "string"
+                },
+                "contentId": {
+                    "type": "string"
+                },
+                "decorationId": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "summary": {
+                            "type": "string"
+                        },
+                        "synopsis": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "trackingId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "lastUpdated",
+                "contentId",
+                "channelId",
+                "decorationId",
+                "announcedStart",
+                "announcedEnd",
+                "broadcastDate",
+                "images"
+            ]
+        },
+        "Manifestation": {
+            "type": "object",
+            "properties": {
+                "contentId": {
+                    "type": "string"
+                },
+                "deeplink": {
+                    "type": "object",
+                    "required": [
+                        "parameters"
+                    ],
+                    "properties": {
+                        "parameters": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "field": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "provider": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "delivery": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "origin": {
+                                "type": "string"
+                            },
+                            "path": {
+                                "type": "string"
+                            },
+                            "protocol": {
+                                "type": "string"
+                            },
+                            "resourceId": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "duration": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "identity": {
+                    "type": "string"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "onDemandEventIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "quality": {
+                    "type": "string"
+                },
+                "realDuration": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "subtitles": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "accessibilityServiceSupported": {
+                                "type": "string",
+                                "enum": [
+                                    "ForeignLanguage",
+                                    "FullTexted",
+                                    "HardOfHearing"
+                                ]
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "path": {
+                                "type": "string"
+                            },
+                            "secure": {
+                                "type": "boolean"
+                            },
+                            "subtitlesLanguageSupported": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "path",
+                            "secure",
+                            "name",
+                            "subtitlesLanguageSupported",
+                            "accessibilityServiceSupported"
+                        ]
+                    }
+                },
+                "subtitlesLanguagesSupported": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "timecodeDescription": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "endTime": {
+                                "type": "string"
+                            },
+                            "isSkippable": {
+                                "type": "boolean"
+                            },
+                            "startTime": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string",
+                                "enum": [
+                                    "COMMERCIAL",
+                                    "END_CREDITS",
+                                    "INTRO",
+                                    "RECAP"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "videoType": {
+                    "type": "string",
+                    "enum": [
+                        "deeplink",
+                        "feature",
+                        "preview",
+                        "trailer"
+                    ]
+                }
+            },
+            "required": [
+                "id",
+                "contentId",
+                "lastUpdated",
+                "videoType",
+                "onDemandEventIds",
+                "identity",
+                "subtitlesLanguagesSupported"
+            ]
+        }
+    }
+}
