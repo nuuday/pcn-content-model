@@ -13,7 +13,7 @@ plugins {
 
 group = 'dk.yousee.content.model'
 description = 'Content Model JSON Schema'
-version = '0.0.1'
+version = '0.0.2'
 
 repositories {
     mavenCentral()
