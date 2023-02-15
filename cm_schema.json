@@ -2,18 +2,35 @@
     "$id": "http://yousee.dk/schema/content-model.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "header",
+        "payload"
+    ],
     "properties": {
-        "Message": {
+        "id": {
+            "type": "string"
+        },
+        "header": {
+            "$ref": "#/definitions/header"
+        },
+        "payload": {
+            "$ref": "#/definitions/payload"
+        }
+    },
+    "definitions": {
+        "message": {
             "type": "object",
             "properties": {
                 "id": {
                     "type": "string"
                 },
                 "header": {
-                    "$ref": "#/definitions/Header"
+                    "$ref": "#/definitions/header"
                 },
                 "payload": {
-                    "$ref": "#/definitions/Payload"
+                    "$ref": "#/definitions/payload"
                 }
             },
             "required": [
@@ -21,10 +38,8 @@
                 "header",
                 "payload"
             ]
-        }
-    },
-    "definitions": {
-        "Header": {
+        },
+        "header": {
             "type": "object",
             "required": [
                 "entity",
@@ -68,33 +83,33 @@
                 }
             }
         },
-        "Payload": {
+        "payload": {
             "type": "object",
             "properties": {
                 "content": {
-                    "$ref": "#/definitions/Content"
+                    "$ref": "#/definitions/content"
                 },
                 "season": {
-                    "$ref": "#/definitions/Season"
+                    "$ref": "#/definitions/season"
                 },
                 "series": {
-                    "$ref": "#/definitions/Series"
+                    "$ref": "#/definitions/series"
                 },
                 "onDemandEvents": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/OnDemandEvent"
+                        "$ref": "#/definitions/onDemandEvent"
                     }
                 },
                 "scheduleEvent": {
-                    "$ref": "#/definitions/ScheduleEvent"
+                    "$ref": "#/definitions/scheduleEvent"
                 },
                 "manifestation": {
-                    "$ref": "#/definitions/Manifestation"
+                    "$ref": "#/definitions/manifestation"
                 }
             }
         },
-        "Content": {
+        "content": {
             "type": "object",
             "properties": {
                 "episode": {
@@ -142,7 +157,7 @@
                     "type": "string"
                 },
                 "mediaMetadata": {
-                    "$ref": "#/definitions/MediaMetadata"
+                    "$ref": "#/definitions/mediaMetadata"
                 }
             },
             "required": [
@@ -151,7 +166,7 @@
                 "mediaMetadata"
             ]
         },
-        "Season": {
+        "season": {
             "type": "object",
             "properties": {
                 "id": {
@@ -162,7 +177,7 @@
                     "format": "date-time"
                 },
                 "mediaMetadata": {
-                    "$ref": "#/definitions/MediaMetadata"
+                    "$ref": "#/definitions/mediaMetadata"
                 },
                 "number": {
                     "type": "integer",
@@ -182,7 +197,7 @@
                 "mediaMetadata"
             ]
         },
-        "Series": {
+        "series": {
             "type": "object",
             "properties": {
                 "id": {
@@ -193,7 +208,7 @@
                     "format": "date-time"
                 },
                 "mediaMetadata": {
-                    "$ref": "#/definitions/MediaMetadata"
+                    "$ref": "#/definitions/mediaMetadata"
                 },
                 "numberOfSeasons": {
                     "type": "integer",
@@ -201,7 +216,7 @@
                 }
             }
         },
-        "MediaMetadata":  {
+        "mediaMetadata":  {
             "type": "object",
             "required": [
                 "categories",
@@ -322,7 +337,7 @@
                         "type": "object",
                         "properties": {
                             "description": {
-                                "$ref": "#/definitions/Description"
+                                "$ref": "#/definitions/description"
                             },
                             "images": {
                                 "type": "array",
@@ -436,7 +451,7 @@
                 }
             }
         },
-        "Description": {
+        "description": {
             "type": "object",
             "properties": {
                 "summary": {
@@ -447,7 +462,7 @@
                 }
             }
         },
-        "OnDemandEvent": {
+        "onDemandEvent": {
             "type": "object",
             "properties": {
                 "availabilityEnd": {
@@ -557,7 +572,7 @@
                 "rights"
             ]
         },
-        "ScheduleEvent": {
+        "scheduleEvent": {
             "type": "object",
             "properties": {
                 "actualEnd": {
@@ -592,7 +607,7 @@
                     }
                 },
                 "description": {
-                    "$ref": "#/definitions/Description"
+                    "$ref": "#/definitions/description"
                 },
                 "id": {
                     "type": "string"
@@ -620,7 +635,7 @@
                 "images"
             ]
         },
-        "Manifestation": {
+        "manifestation": {
             "type": "object",
             "properties": {
                 "contentId": {
