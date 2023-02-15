@@ -322,15 +322,7 @@
                         "type": "object",
                         "properties": {
                             "description": {
-                                "type": "object",
-                                "properties": {
-                                    "summary": {
-                                        "type": "string"
-                                    },
-                                    "synopsis": {
-                                        "type": "string"
-                                    }
-                                }
+                                "$ref": "#/definitions/Description"
                             },
                             "images": {
                                 "type": "array",
@@ -597,15 +589,7 @@
                     }
                 },
                 "description": {
-                    "type": "object",
-                    "properties": {
-                        "summary": {
-                            "type": "string"
-                        },
-                        "synopsis": {
-                            "type": "string"
-                        }
-                    }
+                    "$ref": "#/definitions/Description"
                 },
                 "id": {
                     "type": "string"
