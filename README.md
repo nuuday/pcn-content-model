@@ -1,7 +1,7 @@
 # pcn-content-model
 Repository containing json schema for the yousee content model.
 
-Messages contains 1 of the payload entity types.
+Messages contain 1 of the payload entity types.
 ```
 ── Message
    ├── Header
