@@ -27,4 +27,4 @@ https://github.com/joelittlejohn/jsonschema2pojo/tree/master/jsonschema2pojo-gra
 
 #### gradle plugin for gradle kotlin pojo from schema
 See:  
-https://github.com/pwall567/json-kotlin-schema-codegen
+https://github.com/pwall567/json-kotlin-gradle
