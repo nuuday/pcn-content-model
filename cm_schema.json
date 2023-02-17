@@ -344,15 +344,7 @@
                                 "type": "array",
                                 "uniqueItems": true,
                                 "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "imagetype": {
-                                            "type": "string"
-                                        },
-                                        "url": {
-                                            "type": "string"
-                                        }
-                                    }
+                                    "$ref": "#/definitions/Image"
                                 }
                             },
                             "metadataLanguage": {
@@ -462,6 +454,18 @@
                     "type": "string"
                 }
             }
+        },
+        "Image": {
+            "type": "object",
+            "properties": {
+                "imagetype": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "required": ["imagetype", "url"]
         },
         "OnDemandEvent": {
             "type": "object",
@@ -622,6 +626,13 @@
                 },
                 "trackingId": {
                     "type": "string"
+                },
+                "images": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/definitions/Image"
+                    }
                 }
             },
             "required": [
