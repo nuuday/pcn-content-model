@@ -215,7 +215,12 @@
                     "type": "integer",
                     "format": "int32"
                 }
-            }
+            },
+            "required": [
+                "id",
+                "lastUpdated",
+                "mediaMetadata"
+            ]
         },
         "MediaMetadata":  {
             "type": "object",
