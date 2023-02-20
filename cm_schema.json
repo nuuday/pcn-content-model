@@ -508,16 +508,13 @@
                 "provider": {
                     "type": "string"
                 },
+                "onDemandEventType": {
+                    "$ref": "#/definitions/OnDemandEventType"
+                },
                 "rights": {
                     "type": "object",
                     "properties": {
-                        "archive": {
-                            "type": "boolean"
-                        },
                         "downloadable": {
-                            "type": "boolean"
-                        },
-                        "npvr": {
                             "type": "boolean"
                         },
                         "offerType": {
@@ -533,28 +530,22 @@
                             "type": "number"
                         },
                         "scrubbing": {
-                            "type": "string"
+                            "$ref": "#/definitions/ScrubbingType"
                         },
                         "startOver": {
                             "type": "boolean"
                         },
                         "streamableAway": {
                             "type": "boolean"
-                        },
-                        "vod": {
-                            "type": "boolean"
                         }
                     },
                     "required": [
-                        "archive",
                         "downloadable",
-                        "npvr",
                         "offerType",
                         "price",
                         "scrubbing",
                         "startOver",
-                        "streamableAway",
-                        "vod"
+                        "streamableAway"
                     ]
                 },
                 "rightsId": {
@@ -580,6 +571,23 @@
                 "availabilityStart",
                 "availabilityEnd",
                 "rights"
+            ]
+        },
+        "OnDemandEventType": {
+            "type": "string",
+            "enum": [
+                "vod",
+                "npvr",
+                "archive"
+            ]
+        },
+        "ScrubbingType": {
+            "type": "string",
+            "enum": [
+                "none",
+                "full",
+                "highestbookmark",
+                "after600"
             ]
         },
         "ScheduleEvent": {
@@ -638,6 +646,33 @@
                     "items": {
                         "$ref": "#/definitions/Image"
                     }
+                },
+                "scheduleRights": {
+                    "type": "object",
+                    "properties": {
+                        "onDemandTypes": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "$ref": "#/definitions/OnDemandEventType"
+                            }
+                        },
+                        "scrubbing": {
+                            "$ref": "#/definitions/ScrubbingType"
+                        },
+                        "startOver": {
+                            "type": "boolean"
+                        },
+                        "streamableAway": {
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "onDemandTypes",
+                        "scrubbing",
+                        "startOver",
+                        "streamableAway"
+                    ]
                 }
             },
             "required": [
