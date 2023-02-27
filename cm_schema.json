@@ -509,7 +509,12 @@
                     "type": "string"
                 },
                 "onDemandEventType": {
-                    "$ref": "#/definitions/OnDemandEventType"
+                    "type": "string",
+                    "enum": [
+                        "vod",
+                        "npvr",
+                        "archive"
+                    ]
                 },
                 "rights": {
                     "type": "object",
@@ -571,14 +576,6 @@
                 "availabilityStart",
                 "availabilityEnd",
                 "rights"
-            ]
-        },
-        "OnDemandEventType": {
-            "type": "string",
-            "enum": [
-                "vod",
-                "npvr",
-                "archive"
             ]
         },
         "ScrubbingType": {
@@ -650,13 +647,6 @@
                 "scheduleRights": {
                     "type": "object",
                     "properties": {
-                        "onDemandTypes": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "items": {
-                                "$ref": "#/definitions/OnDemandEventType"
-                            }
-                        },
                         "scrubbing": {
                             "$ref": "#/definitions/ScrubbingType"
                         },
