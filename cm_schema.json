@@ -489,7 +489,7 @@
                 "contentId": {
                     "type": "string"
                 },
-                "decoration": {
+                "decorationId": {
                     "type": "string"
                 },
                 "id": {
@@ -571,7 +571,7 @@
                 "lastUpdated",
                 "contentId",
                 "slug",
-                "decoration",
+                "decorationId",
                 "site",
                 "availabilityStart",
                 "availabilityEnd",
