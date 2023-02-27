@@ -142,9 +142,9 @@
                             "type": {
                                 "type": "string",
                                 "enum": [
-                                    "CRID",
-                                    "ORIGIN_CHANNEL",
-                                    "PROVIDER_ID"
+                                    "crid",
+                                    "originChannel",
+                                    "providerId"
                                 ]
                             }
                         }
@@ -525,10 +525,10 @@
                         "offerType": {
                             "type": "string",
                             "enum": [
-                                "FREE_CONTENT",
-                                "PURCHASE",
-                                "RENT",
-                                "SVOD"
+                                "freeContent",
+                                "purchase",
+                                "rent",
+                                "svod"
                             ]
                         },
                         "price": {
@@ -766,9 +766,9 @@
                             "accessibilityServiceSupported": {
                                 "type": "string",
                                 "enum": [
-                                    "ForeignLanguage",
-                                    "FullTexted",
-                                    "HardOfHearing"
+                                    "foreignLanguage",
+                                    "fullTexted",
+                                    "hardOfHearing"
                                 ]
                             },
                             "name": {
@@ -818,10 +818,10 @@
                             "type": {
                                 "type": "string",
                                 "enum": [
-                                    "COMMERCIAL",
-                                    "END_CREDITS",
-                                    "INTRO",
-                                    "RECAP"
+                                    "commercial",
+                                    "endCredits",
+                                    "intro",
+                                    "recap"
                                 ]
                             }
                         }
