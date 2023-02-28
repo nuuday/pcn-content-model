@@ -843,8 +843,7 @@
                 "lastUpdated",
                 "videoType",
                 "onDemandEventIds",
-                "identity",
-                "subtitlesLanguagesSupported"
+                "identity"
             ]
         }
     }
