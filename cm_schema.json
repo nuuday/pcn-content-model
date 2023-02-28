@@ -570,8 +570,6 @@
                 "id",
                 "lastUpdated",
                 "contentId",
-                "slug",
-                "decorationId",
                 "site",
                 "availabilityStart",
                 "availabilityEnd",
