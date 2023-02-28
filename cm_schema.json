@@ -743,12 +743,6 @@
                     "type": "string",
                     "format": "date-time"
                 },
-                "onDemandEventIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
                 "quality": {
                     "type": "string"
                 },
@@ -839,7 +833,6 @@
                 "contentId",
                 "lastUpdated",
                 "videoType",
-                "onDemandEventIds",
                 "identity"
             ]
         }
