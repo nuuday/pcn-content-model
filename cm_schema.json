@@ -786,8 +786,7 @@
                             "path",
                             "secure",
                             "name",
-                            "subtitlesLanguageSupported",
-                            "accessibilityServiceSupported"
+                            "subtitlesLanguageSupported"
                         ]
                     }
                 },
