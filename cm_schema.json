@@ -642,6 +642,9 @@
                         "$ref": "#/definitions/Image"
                     }
                 },
+                "slug": {
+                    "type": "string"
+                }
                 "scheduleRights": {
                     "type": "object",
                     "properties": {
