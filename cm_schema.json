@@ -159,6 +159,9 @@
                 },
                 "mediaMetadata": {
                     "$ref": "#/definitions/MediaMetadata"
+                },
+                "sport": {
+                    "$ref": "#/definitions/Sport"
                 }
             },
             "required": [
@@ -446,6 +449,83 @@
                             }
                         }
                     }
+                }
+            }
+        },
+        "Sport" : {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "stage": {
+                    "type": "string"
+                },
+                "round": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "time": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "genre" : {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "league" : {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "venue" : {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "home" : {
+                    "type": "object",
+                    "$ref": "#/definitions/Team"
+                },
+                "away" : {
+                    "type": "object",
+                    "$ref": "#/definitions/Team"
+                }
+            }
+        },
+        "Team" : {
+            "type": "object",
+            "properties": {
+                "kind": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
                 }
             }
         },
