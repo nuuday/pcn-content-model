@@ -690,6 +690,9 @@
                 "channelId": {
                     "type": "string"
                 },
+                "slug": {
+                    "type": "string"
+                },
                 "contentId": {
                     "type": "string"
                 },
