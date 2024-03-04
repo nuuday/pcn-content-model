@@ -743,6 +743,13 @@
                         "startOver",
                         "streamableAway"
                     ]
+                },
+                "programType": {
+                    "type": "string",
+                    "enum": [
+                        "live",
+                        "rerun"
+                    ]
                 }
             },
             "required": [
