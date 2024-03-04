@@ -743,6 +743,13 @@
                         "startOver",
                         "streamableAway"
                     ]
+                },
+                "broadcastType": {
+                    "type": "string",
+                    "enum": [
+                        "live",
+                        "rerun"
+                    ]
                 }
             },
             "required": [
