@@ -217,6 +217,9 @@
                 "numberOfSeasons": {
                     "type": "integer",
                     "format": "int32"
+                },
+                "seriesChannelId": {
+                    "type": "string"
                 }
             },
             "required": [
