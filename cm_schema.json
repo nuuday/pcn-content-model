@@ -753,6 +753,9 @@
                 },
                 "seriesChannelId": {
                     "type": "string"
+                },
+                "removeDuplicates": {
+                    "type": "boolean"
                 }
             },
             "required": [
