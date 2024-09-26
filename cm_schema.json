@@ -696,12 +696,6 @@
                 "contentId": {
                     "type": "string"
                 },
-                "decorationId": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
                 "description": {
                     "$ref": "#/definitions/Description"
                 },
