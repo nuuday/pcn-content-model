@@ -866,9 +866,6 @@
                             "name": {
                                 "type": "string"
                             },
-                            "path": {
-                                "type": "string"
-                            },
                             "secure": {
                                 "type": "boolean"
                             },
@@ -877,7 +874,6 @@
                             }
                         },
                         "required": [
-                            "path",
                             "secure",
                             "name",
                             "subtitlesLanguageSupported"
