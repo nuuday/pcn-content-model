@@ -874,7 +874,6 @@
                             }
                         },
                         "required": [
-                            "secure",
                             "name",
                             "subtitlesLanguageSupported"
                         ]
